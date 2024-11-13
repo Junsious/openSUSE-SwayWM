@@ -1,0 +1,48 @@
+# Указываем, что модификатор (Mod) — это клавиша Super (обычно Win)
+set $mod Mod4
+
+# Запуск терминала (например, Alacritty или Konsole)
+bindsym $mod+Return exec alacritty
+
+# Запуск меню приложений Rofi
+bindsym $mod+d exec rofi -show run
+
+# Перезагрузка Sway
+bindsym $mod+Shift+c reload
+
+# Завершение работы Sway
+bindsym $mod+Shift+e exit
+
+# Автозапуск сетевого апплета для управления Wi-Fi (если установлен NetworkManager)
+exec --no-startup-id nm-applet
+
+# Запуск Waybar при старте
+exec waybar
+
+# Фоновый цвет окна
+output * bg #222222 solid_color
+
+# Настройка тачпада (если используется)
+input "type:touchpad" {
+    tap enabled
+    natural_scroll enabled
+}
+
+# Переключение фокусировки между окнами
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Переключение расположения окна
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Настройка рабочих областей для разных мониторов
+workspace 1 output eDP-1
+workspace 2 output HDMI-A-1
+
+# Запуск браузера (пример)
+bindsym $mod+w exec firefox
