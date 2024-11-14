@@ -1,0 +1,13 @@
+configuration {
+    modi: "drun,run";
+    show-icons: true;
+    theme: "gruvbox-dark";
+}
+
+* {
+    background: #1d1f21;
+    foreground: #c5c8c6;
+    selected-background: #c5c8c6;
+    selected-foreground: #1d1f21;
+    font: "sans 12";
+}
