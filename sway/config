@@ -1,48 +1,58 @@
 # Указываем, что модификатор (Mod) — это клавиша Super (обычно Win)
 set $mod Mod4
 
-# Запуск терминала (например, Alacritty или Konsole)
-bindsym $mod+Return exec alacritty
+# Основные привязки клавиш
+bindsym $mod+Return exec alacritty       # Запуск терминала (Alacritty)
+bindsym $mod+d exec rofi -show drun      # Запуск меню приложений Rofi
+bindsym $mod+Shift+c reload              # Перезагрузка Sway
+bindsym $mod+Shift+e exit                # Завершение работы Sway
+bindsym $mod+w exec firefox              # Запуск браузера Firefox
 
-# Запуск меню приложений Rofi
-bindsym $mod+d exec rofi -show run
+# Автозапуск приложений
+exec --no-startup-id nm-applet           # Сетевой аплет для управления Wi-Fi (NetworkManager)
+exec_always --no-startup-id waybar       # Запуск панели Waybar
+exec_always --no-startup-id swaybg -i /path/to/your/wallpaper.jpg -m fill  # Установка фонового изображения
 
-# Перезагрузка Sway
-bindsym $mod+Shift+c reload
-
-# Завершение работы Sway
-bindsym $mod+Shift+e exit
-
-# Автозапуск сетевого апплета для управления Wi-Fi (если установлен NetworkManager)
-exec --no-startup-id nm-applet
-
-# Запуск Waybar при старте
-exec waybar
-
-# Фоновый цвет окна
+# Фоновый цвет окна (используется на случай, если обои не загрузились)
 output * bg #222222 solid_color
 
-# Настройка тачпада (если используется)
+# Настройки тачпада (если используется)
 input "type:touchpad" {
     tap enabled
     natural_scroll enabled
 }
 
-# Переключение фокусировки между окнами
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+# Навигация между окнами
+bindsym $mod+h focus left                # Переключение фокуса на окно слева
+bindsym $mod+j focus down                # Переключение фокуса на окно снизу
+bindsym $mod+k focus up                  # Переключение фокуса на окно сверху
+bindsym $mod+l focus right               # Переключение фокуса на окно справа
 
-# Переключение расположения окна
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+# Перемещение окон
+bindsym $mod+Shift+h move left           # Перемещение окна влево
+bindsym $mod+Shift+j move down           # Перемещение окна вниз
+bindsym $mod+Shift+k move up             # Перемещение окна вверх
+bindsym $mod+Shift+l move right          # Перемещение окна вправо
 
-# Настройка рабочих областей для разных мониторов
-workspace 1 output eDP-1
-workspace 2 output HDMI-A-1
+# Рабочие области
+workspace 1 output eDP-1                 # Рабочая область 1 на встроенном экране (eDP-1)
+workspace 2 output HDMI-A-1              # Рабочая область 2 на внешнем мониторе (HDMI-A-1)
 
-# Запуск браузера (пример)
-bindsym $mod+w exec firefox
+# Управление звуком (добавлено для удобства)
+bindsym $mod+Up exec pactl set-sink-volume @DEFAULT_SINK@ +5%       # Увеличение громкости
+bindsym $mod+Down exec pactl set-sink-volume @DEFAULT_SINK@ -5%     # Уменьшение громкости
+bindsym $mod+Shift+m exec pactl set-sink-mute @DEFAULT_SINK@ toggle # Включение/выключение звука
+
+# Управление яркостью (если поддерживается)
+bindsym $mod+Shift+Up exec brightnessctl set +10%                   # Увеличение яркости
+bindsym $mod+Shift+Down exec brightnessctl set 10%-                 # Уменьшение яркости
+
+# Настройки раскладки клавиатуры
+input * {
+    xkb_layout "us,ru"                    # Английская и Русская раскладки
+    xkb_options "grp:alt_shift_toggle"    # Переключение раскладки по Alt+Shift
+}
+
+# Отображение системных виджетов через Conky (если используется)
+exec_always --no-startup-id conky -c ~/.config/conky/conky.conf
+exec_always --no-startup-id conky -c ~/.config/conky/conky_keybindings.conf
