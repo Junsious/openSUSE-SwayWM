@@ -1,0 +1,14 @@
+* {
+  font-family: "sans-serif";
+  font-size: 12px;
+  background-color: rgba(29, 31, 33, 0.9);
+  color: #c5c8c6;
+}
+
+#clock, #battery, #network {
+  padding: 0 10px;
+}
+
+#tray > * {
+  margin: 0 4px;
+}
