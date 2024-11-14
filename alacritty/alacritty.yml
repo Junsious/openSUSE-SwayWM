@@ -1,0 +1,11 @@
+# alacritty.yml
+window:
+  opacity: 0.9   # Полупрозрачность
+
+colors:
+  primary:
+    background: '#1d1f21'
+    foreground: '#c5c8c6'
+
+font:
+  size: 12.0
