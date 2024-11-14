@@ -144,3 +144,10 @@ System Tools:
 conky -c ~/.config/conky/conky.conf &
 conky -c ~/.config/conky/conky_keybindings.conf &
 ```
+Автозапуск всех компонентов — добавьте все команды автозапуска (conky, waybar, swaybg и т.д.) в конфиг Sway, чтобы они запускались автоматически при старте.
+```
+exec_always --no-startup-id swaybg -i /path/to/your/wallpaper.jpg -m fill
+exec_always --no-startup-id conky -c ~/.config/conky/conky.conf
+exec_always --no-startup-id conky -c ~/.config/conky/conky_keybindings.conf
+exec_always --no-startup-id waybar
+```
