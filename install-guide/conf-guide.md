@@ -86,7 +86,7 @@ css
 }
 ```
 4. Rofi (меню запуска)
-Создайте конфигурацию для rofi, чтобы создать меню запуска. Файл ~/.config/rofi/config.rasi:
+Создайте конфигурацию для rofi, чтобы создать меню запуска. Файл ```~/.config/rofi/config.rasi:```
 
 ```
 configuration {
@@ -103,13 +103,13 @@ configuration {
     font: "sans 12";
 }
 ```
-Для запуска rofi, установите комбинацию клавиш в конфиге Sway (~/.config/sway/config):
+Для запуска rofi, установите комбинацию клавиш в конфиге Sway (```~/.config/sway/config```):
 
 ```
 bindsym $mod+d exec rofi -show drun
 ```
 5. Список сочетаний клавиш (второй экземпляр conky)
-Вы можете создать ещё один conky.conf для отображения списка сочетаний клавиш, например, слева. Создайте ~/.config/conky/conky_keybindings.conf:
+Вы можете создать ещё один conky.conf для отображения списка сочетаний клавиш, например, слева. Создайте ```~/.config/conky/conky_keybindings.conf:```
 
 ```
 conky.config = {
